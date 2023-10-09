@@ -1,0 +1,99 @@
+body {
+  background-color: #1f1f1f;
+  color: #ffffff;
+}
+
+h2 {
+  font-family: sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+  text-transform: capitalize;
+}
+
+h2 + p::first-letter {
+  font-size: x-large;
+}
+
+a {
+  color: #2196f3;
+}
+
+a:hover {
+  color: #1976d2;
+}
+
+table {
+  color: #ffffff;
+}
+
+table tr:hover {
+  background-color: lightgray;
+}
+
+table tr:nth-child(even) {
+  background-color: #333333;
+}
+
+th {
+  text-transform: uppercase;
+}
+
+a {
+  color: green;
+}
+
+td.top {
+  background-color: #daa520;
+}
+
+p em:nth-of-type(1),
+p em:nth-of-type(2) {
+  background-color: blue;
+}
+
+#the_most_important {
+  text-transform: uppercase;
+  background-color: gold;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li:first-child a {
+  text-decoration: underline;
+}
+
+nav ul li:not(:first-child) a {
+  text-decoration: none;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #333333;
+}
+
+::selection {
+  background-color: yellow;
+}
+
+body a:not(nav a):hover {
+  cursor: pointer;
+}
+
+input {
+  height: 20px;
+}
+
+input[type="text"] {
+  border-color: lightgray;
+}
+
+input[name="message"] {
+  height: 50px;
+}

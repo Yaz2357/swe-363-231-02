@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="dark_theme.css">
+        <style>
+          body {
+            overflow: hidden;
+          }
+    
+          .loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1f1f1f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeOut 2s ease-in-out forwards;
+          }
+    
+          @keyframes fadeOut {
+            0% {
+              opacity: 1;
+            }
+            100% {
+              opacity: 0;
+              display: none;
+            }
+          }
+    
+          .loader {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 4px solid #ffffff;
+            border-top-color: transparent;
+            animation: loader-spin 1s linear infinite;
+          }
+    
+          @keyframes loader-spin {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+        </style>
+        <meta name="description" content="متجر المعرفة الإلكتروني - وجهتك الشاملة للموارد التعليمية.">
+        <meta name="keywords" content="المعرفة الإلكترونية، المتجر، الموارد التعليمية، المواد التعلمية، الكتب الإلكترونية">
+        <meta name="author" content="يزيد الدرعان">
+        <title>متجر المعرفة الإلكتروني</title>
+      </head>
+      <body>
+        <div class="loader-overlay">
+          <div class="loader"></div>
+        </div>
+        
+        <header>
+          <h1>مرحبًا بك في متجر المعرفة الإلكتروني</h1>
+        </header>
+        <main>
+            <nav>
+                <label for="menu-toggle" class="menu-icon">&#9776;</label>
+                <ul class="menu">
+                    <li><a href="#top-selling">الأكثر مبيعًا</a></li>
+                    <li><a href="#about">حول</a></li>
+                    <li><a href="Index.HTML">English</a></li>
+                </ul>
+              </nav>
+          <figure>
+            <img src="E-books.png" alt="غلاف الكتاب" width="300" height="400">
+          </figure>
+          <section id="about">
+            <h2>حول الموقع</h2>
+            <p>مرحبًا بك في <em id="the_most_important">متجر المعرفة الإلكتروني</em>، وجهتك الشاملة لمجموعة واسعة من <em>الكتب الإلكترونية</em> في مختلف المجالات. سواء كنت تهتم بالروايات الخيالية أو غير الخيالية، الكتب التعليمية أو المحتوى التعليمي الآخر، فإننا نقدم ما تحتاجه. تشمل مجموعتنا العديد من الكتب الأكثر مبيعًا، والكلاسيكيات الخالدة، والكنوز المخفية، وكلها متاحة في شكل رقمي لراحتك.</p>
+            <p>ابدأ رحلتك القرائية الرقمية معنا واستكشف عالمًا من الخيال والإلهام والمعرفة. متعة القراءة الممتعة!</p>
+          </section>
+          <section id="top-selling">
+            <h2>الأكثر مبيعًا</h2>
+            <table>
+              <tr>
+                <th>العنوان</th>
+                <th>المؤلف</th>
+                <th>النوع</th>
+                <th>السعر</th>
+              </tr>
+              <tr>
+                <td>القاتل في الحقل</td>
+                <td>ج. د. سالنجر</td>
+                <td>الخيال</td>
+                <td>9.99 دولار</td>
+              </tr>
+              <tr>
+                <td>مزرعة الحيوانات</td>
+                <td>جورج أورويل</td>
+                <td>ديستوبيا</td>
+                <td>12.99 دولار</td>
+              </tr>
+              <tr>
+                <td>1984</td>
+                <td>جورج أورويل</td>
+                <td>ديستوبيا</td>
+                <td>7.99 دولار</td>
+              </tr>
+            </table>
+          </section>
+        </main>
+    <footer>
+        <p>هل تبحث عن وظيفة؟ <a href="HireMe.html">التقديم</a></p>
+        <p>في حال تواجد تساؤلات, من فضلك <a href="ContactUs.html">تواصل معنا</a>.</p>
+        <p>&copy; 2023 متجر المعرفة الالكتروني. كل الحقوق محفوظة.</p>
+    </footer>
+</body>
+</html>
