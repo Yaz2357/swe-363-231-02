@@ -14,12 +14,12 @@ body {
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
   text-align: center;
-}
-
-h1 {
-  margin-bottom: 20px;
-  color: #fff;
 }
 
 .board {
@@ -31,6 +31,7 @@ h1 {
   height: 320px;
   margin-bottom: 20px;
 }
+
 
 .cell {
   display: flex;
@@ -99,6 +100,13 @@ button:hover {
       <div class="cell" onclick="makeMove(2, 2)"></div>
     </div>
     <button onclick="resetBoard()">Reset</button>
+    <p>Instructions:</p>
+    <p>Use the number keys 1-9 to make a move on the board and 0 for reset.</p>
+    <p>The number keys correspond to the board positions as follows:</p>
+    <p>1 2 3</p>
+    <p>4 5 6</p>
+    <p>7 8 9</p>
+    <p>Press any key to start playing...</p>
   </div>
 </body>
 </html>
