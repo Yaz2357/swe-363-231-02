@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #222;
+            color: white;
+        }
+
+        .cell {
+            font-family: sans-serif;
+            font-size: larger;
+            font-weight: bolder;
+            background-color: #333;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #555;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cell:hover {
+            background-color: #444;
+        }
+
+        .cell.chosen-x {
+            background-color: darkblue;
+        }
+
+        .cell.chosen-o {
+            background-color: darkred;
+        }
+
+        .board {
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-family: sans-serif;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-family: sans-serif;
+            font-size: larger;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #777;
+        }
+
+        .row {
+            display: flex;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1 id="turn">
+        Now it's is <span>X</span> turn
+    </h1>
+    <!-- Board -->
+    <div class="board">
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <button id="reset">Reset</button>
+        <script>
+
+            // decided which turn is it
+            let turn = "X"
+            let gameEnded = false
+
+            // when we click on a cell add the letter 
+            let board = document.getElementsByClassName("board")[0]
+            board.addEventListener("click", cellClicked)
+
+            function cellClicked(event) {
+    let cell = event.target;
+
+    if (cell.innerText !== "") {
+        return;
+    }
+
+    cell.innerText = turn;
+
+    // Add class to the cell based on the current player's turn
+    cell.classList.add(turn === "X" ? "chosen-x" : "chosen-o");
+
+    gameEnded = checkForWin();
+    if (gameEnded) {
+        let turnHeader = document.querySelector("#turn");
+        turnHeader.textContent = `${turn} won`;
+        turnHeader.style.color = turn === "X" ? "darkblue" : "darkred";
+    } else {
+        let cells = document.getElementsByClassName("cell");
+    let filledCells = Array.from(cells).filter(cell => cell.innerText !== "");
+    if (filledCells.length === cells.length) {
+        gameEnded = true;
+        let turnHeader = document.querySelector("#turn");
+        turnHeader.textContent = "Draw";
+        turnHeader.style.color = "White";
+        return;
+    }
+        turn = turn === "X" ? "O" : "X";
+        let turnLetter = document.querySelector("#turn span");
+        turnLetter.innerText = turn;
+    }
+}
+
+function checkForWin() {
+    const cells = document.getElementsByClassName("cell");
+
+    // Define the winning patterns
+    const patterns = [
+        [0, 1, 2], // Top row
+        [3, 4, 5], // Middle row
+        [6, 7, 8], // Bottom row
+        [0, 3, 6], // Left column
+        [1, 4, 7], // Middle column
+        [2, 5, 8], // Right column
+        [0, 4, 8], // Diagonal from top-left to bottom-right
+        [2, 4, 6]  // Diagonal from top-right to bottom-left
+    ];
+
+    for (const pattern of patterns) {
+        const [a, b, c] = pattern;
+        if (
+            cells[a].innerText === cells[b].innerText &&
+            cells[b].innerText === cells[c].innerText &&
+            cells[a].innerText !== ""
+        ) {
+            return true; // Found a winning pattern
+        }
+    }
+
+    return false; // No winning pattern found
+}
+
+
+        // Reset button event listener
+        const resetButton = document.getElementById("reset");
+        resetButton.addEventListener("click", resetGame);
+
+        function resetGame() {
+
+            // Reset cells
+            const cells = document.getElementsByClassName("cell");
+            for (let cell of cells) {
+                cell.innerText = "";
+                cell.style.backgroundColor = "";
+                cell.classList.remove("chosen-x", "chosen-o", "winning");
+            }
+
+            let turnHeader = document.querySelector("#turn");
+            turnHeader.innerHTML = "Now it's is <span>X</span> turn";
+            turnHeader.style.color = "White";
+
+            // Reset turn
+            turn = "X";
+            let turnLetter = document.querySelector("#turn span");
+            turnLetter.innerText = turn;
+
+            // Reset gameEnded flag
+            gameEnded = false;
+        }
+
+        </script>
+    </div>
+</body>
+
+</html>
