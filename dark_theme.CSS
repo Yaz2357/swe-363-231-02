@@ -177,3 +177,7 @@ nav .menu li a:hover {
     transform: rotate(360deg);
   }
 }
+
+canvas {
+  border: 1px solid #ffffff;
+}
