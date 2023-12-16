@@ -38,4 +38,10 @@ router.get('/Index-ar', (req, res) => {
     res.sendFile(path.join(__dirname, '../swe-363-231-02/Index-ar.html'));
   });
 
+  router.post('/form', (req, res) => {
+    const formData = req.body;
+    console.log("Form Data: ", formData);
+    res.sendFile(path.join(__dirname, '../swe-363-231-02/Confirmation.html'));
+  });
+
   module.exports = router;
