@@ -30,8 +30,9 @@ document.getElementById("top-selling-table").innerHTML= html;
 
 const canvas = document.getElementById('weather-canvas');
 const ctx = canvas.getContext('2d');
+const cities = ['Khobar', 'Riyadh', 'New York'];
 
-function drawWeather(weatherData) {
+function drawWeather(weatherData,City) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   // Draw weather information on the canvas
@@ -39,17 +40,18 @@ function drawWeather(weatherData) {
   const temperature = weatherData.main.temp;
   ctx.font = '20px Arial';
   ctx.fillStyle = 'white';
-  ctx.fillText(`The Khobar city Temperature is ${temperature}°C`, 10, 30);
+  ctx.fillText(`The ${City} city Temperature is ${temperature}°C`, 10, 30);
 }
 
 function fetchWeatherData() {
+    const randomIndex = Math.floor(Math.random() * cities.length);
   // Make an API call to retrieve weather data
   // Replace 'YOUR_API_KEY' with your actual API key
-  fetch('https://api.openweathermap.org/data/2.5/weather?q=Khobar&appid=63693afd04404d7615059bce6d9818d8&units=metric')
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cities[randomIndex]}&appid=63693afd04404d7615059bce6d9818d8&units=metric`)
     .then(response => response.json())
     .then(weatherData => {
       // Call the drawWeather function to render the data on the canvas
-      drawWeather(weatherData);
+      drawWeather(weatherData,cities[randomIndex]);
     })
     .catch(error => {
       console.log('Error fetching weather data:', error);
@@ -60,4 +62,4 @@ function fetchWeatherData() {
 fetchWeatherData();
 
 // Call fetchWeatherData every 10 seconds
-setInterval(fetchWeatherData, 10000);
+setInterval(fetchWeatherData, 1500);
