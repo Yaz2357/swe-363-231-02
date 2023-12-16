@@ -20,11 +20,9 @@ const books = [
   ];
   
   const generateTable = () => {
-    let html = `<tr> <th>Title</th> <th>Author</th> <th>Genre</th> <th>Price</th> </tr>`;
-  
-    books.forEach(book => {
-      html += `<tr> <td>${book.Title}</td> <td>${book.Author}</td> <td>${book.Genre}</td> <td>${book.Price}</td> </tr>`;
-    });
+    const html = `<tr> <th>Title</th> <th>Author</th> <th>Genre</th> <th>Price</th> </tr>` +
+      books.map(book => `<tr> <td>${book.Title}</td> <td>${book.Author}</td> <td>${book.Genre}</td> <td>${book.Price}</td> </tr>`)
+        .join("");
   
     document.getElementById("top-selling-table").innerHTML = html;
   };
