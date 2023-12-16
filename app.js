@@ -2,18 +2,18 @@ const express = require('express');
 const app = express();
 const port = 1000;
 
-app.get('/', (req, res) => {
-    res.send('Welcome to E-Knowledge Store');
-  });
+const mainRouters = require('./routers');
 
-  app.get('/top-selling', (req, res) => {
-    res.send('View our top selling books');
-  });
-
-  app.get('/about', (req, res) => {
-    res.send('Learn more about E-Knowledge Store');
-  });
+app.use('/', mainRouters);
+app.use('/Confirmation', mainRouters);
+app.use('/ContactUs', mainRouters);
+app.use('/mini-games', mainRouters);
+app.use('/HireMe', mainRouters);
+app.use('/Index-ar', mainRouters);
+app.use('/dark_theme', mainRouters);
+app.use('/script', mainRouters);
+app.use('/E-books', mainRouters);
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
-});
+}); 
